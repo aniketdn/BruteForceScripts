@@ -1,21 +1,21 @@
 import itertools, os, PyPDF2
 
-f = open("dict.txt", "w")
-f.truncate(0)
+f1 = open("dict.txt", "w")
+
 fname = "abc"
 print(os.walk("."))
 for r, d, f in os.walk("."):
-	print(r)
-    for filename in files:
-        if filename.endswith(".pdf"):
-            fname=filename
+	for filename in f:
+		if filename.endswith(".pdf"):
+		    fname=filename
 print(fname)
-f.write("bac321\n")
+
 alphabets = ['a', 'b', 'c', 'd', 'e', '1', '2', '3', '4', '5']
 count=6
 words = itertools.product(alphabets, repeat = count)
+
 for word in words:
-	f.write(''.join(word)+"\n")
+	f1.write(''.join(word)+"\n")
 
 print("Word List created")
 dictionary="dict.txt"
@@ -25,14 +25,14 @@ try:
 	fpdf=PyPDF2.PdfFileReader(open(fname,"rb"))
 except PyPDF2.utils.PdfReadError:
 	print("Error in reading pdf")
-
-print("Encryption status")
+	
+print("Encryption status")	
 print(fpdf.isEncrypted)
 
 password = None
 print("Bruteforcing")
-f=open(dictionary,"r")
-for line in f.readlines():
+f1=open(dictionary,"r")
+for line in f1.readlines():
 	password = line.strip('\n')
 	if(fpdf.decrypt(password)):
 		print("Password is>>"+password)
