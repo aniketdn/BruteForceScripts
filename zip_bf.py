@@ -28,6 +28,7 @@ for line in f.readlines():
 	password = line.strip('\n')
 	try:
 		file_to_open.extractall(pwd=password)
+		print("Brute force successful", password)
 		break
 	except:
 		pass
@@ -48,13 +49,3 @@ print("Done")
 
 
 
-print("Reading from PDF")
-print(password)
-
-fpdf.decrypt(password)
-print(fpdf.numPages)
-pages=fpdf.getPage(0)
-
-print("Pages>>>>>"+pages)
-content=page.extractText()
-print(content.encode('utf-8'))
