@@ -25,8 +25,8 @@ try:
 	fpdf=PyPDF2.PdfFileReader(open(fname,"rb"))
 except PyPDF2.utils.PdfReadError:
 	print("Error in reading pdf")
-	
-print("Encryption status")	
+
+print("Encryption status")
 print(fpdf.isEncrypted)
 
 password = None
